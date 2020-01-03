@@ -16,8 +16,8 @@ app.get('/rinks/:city', async (req, res, next) => {
 
 app.get('/rinks/:city/:rinkName', async (req, res, next) => {
   const rinks = await montrealWebsiteAdapter.getRinkData();
-  return _.get(rinks, `[${req.params.city}][${req.params.rinkName}]`) ?
-    res.status(200).json(rinks[req.params.city][req.params.rinkName]) :
+  return _.get(rinks, `[${req.params.city}].rinks[${req.params.rinkName}]`) ?
+    res.status(200).json(rinks[req.params.city].rinks[req.params.rinkName]) :
     next();
 });
 
